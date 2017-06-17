@@ -8,13 +8,13 @@ num_correct = 0
 num_wrong = 0
 
 #This is my word list
-words = ["sky", "shy", "why", "cry", "rye", "bye", "sly", "spy", "fry", "try", "zest", "pez"]
+words = ["sky", "shy", "jazz", "wall", "glee", "why", "cry", "yush", "rye", "bye", "sly", "spy", "fry", "try", "zest", "pez", "job", "bob"]
 
 #This selects a random word from the list then counts how many letters are in the word
 word = numpy.random.choice(words)
 spaces = len(word)
 
-#This identifies how many times you have guessed wrong and prints the corresponding
+#This identifies how many times you have guessed wrong and prints the corresponding picture
 def picture():
     if num_wrong == 0:
         print("__________")
