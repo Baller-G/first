@@ -10,6 +10,6 @@ print(result)
 equation = np.poly1d(result)
 print(equation)
 
-angle = int(raw_input("What angle do you choose?"))
-
-print(equation(angle))
+while True:
+    angle = int(raw_input("What angle do you choose?"))
+    print(equation(angle))
