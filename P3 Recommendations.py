@@ -84,15 +84,23 @@ exit(0) # Delete this after we finish phase 1, for now just get the data loaded
 # This is non-ideal, pandas, scipy, or graphlib should be used here
 
 # Create a dictionary to hold our temporary ratings
-movieRatingTemp = 0 # replace 0 with code for an empty dictionary
+movieRatingTemp = {} # replace 0 with code for an empty dictionary
+for movie in movieData:
+    if movie['movie'] not in movieRatingTemp:
+        movieRatingTemp[movie['movie']] = []
+    movieRatingTemp[movie['movie']].append(movie['rated'])
+
+print(movieRatingTemp)
 
 # For every row in the movie data, add the rating to a list in the dictionary entry
 # for that movies ID (don't forget to initialize the dictionary entry)
 
 # Create an empty dictionary for movieRating and movieRatingCount
-movieRating = 0 # replace 0 with code for an empty dictionary
-movieRatingCount = 0 # replace 0 with code for an empty dictionary
+movieRating = {} # replace 0 with code for an empty dictionary
+movieRatingCount = {} # replace 0 with code for an empty dictionary
 
+for key in movieRatingTemp:
+    movieRating[key] = np.sum(movieRatingTemp[key])
 # Using numpy place the average rating for each movie in movieRating and the total number of ratings in movieRatingCount
 # Note: You will need a for loop to get each dictionary key
 
