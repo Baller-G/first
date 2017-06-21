@@ -60,12 +60,16 @@ def processLikes(iLike):
 
 # Load Data
 # Load the movie names data (u.item) with just columns 0 and 1 (id and name) id is np.int, name is S128
-movieNames = 0 # replace 0 with the correct code to load the movie names
-    
+movieNames = np.loadtxt('./ml-100k/u.item', delimiter = '|', usecols = (0, 1), # replace 0 with the correct code to load the movie names
+                    dtype = {'names': ('id', 'name'), 'format':(np.int, 'S128')})
+
 # Create a dictionary with the ids as keys and the names as the values
-movieDict = 0 # replace 0 with the code to make the dict
+movieDict = dict(zip(movieNames['id'], movieNames['name'])) # replace 0 with the code to make the dict
 # Load the movie Data (u.data) with just columns 0, 1, and 2 (user, movie, rating) all are np.int
-movieData = 0 # replace 0 with the correct cod eto load the movie data
+movieData = np.loadtxt('./data.txt', usecols = (0,1, 2), # replace 0 with the correct cod eto load the movie data
+                        dtype = {'names': ('user', 'movie', 'rating'),
+                                 'formats': (np.int, 'int', 'i4')},
+                       delimiter = "/t")
 
 print(movieData)
 print(movieNames)
