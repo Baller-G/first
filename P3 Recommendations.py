@@ -148,10 +148,10 @@ for id in iLike:
     iLikeNp[id] = 1
 
 # Find the max movie ID + 1
-maxMovie = 0 # replace 0 with the correct code
+maxMovie = np.max(movieNames['id']) + 1 # replace 0 with the correct code
 
 # Find the max user Id + 1
-maxUser = 0 # replace 0 with the correct code
+maxUser = np.max(movieData['user']) # replace 0 with the correct code
 
 # Create an array of 0s which will fill in with 1s when a user likes a movie
 userLikes = np.zeros((maxUser, maxMovie))
