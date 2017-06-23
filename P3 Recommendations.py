@@ -61,15 +61,15 @@ def processLikes(iLike):
 # Load Data
 # Load the movie names data (u.item) with just columns 0 and 1 (id and name) id is np.int, name is S128
 movieNames = np.loadtxt('./ml-100k/u.item', delimiter = '|', usecols = (0, 1), # replace 0 with the correct code to load the movie names
-                    dtype = {'names': ('id', 'name'), 'format':(np.int, 'S128')})
+                                                 dtype = {'names': ('id', 'name'), 'formats': (np.int, 'S128')})
 
 # Create a dictionary with the ids as keys and the names as the values
 movieDict = dict(zip(movieNames['id'], movieNames['name'])) # replace 0 with the code to make the dict
 # Load the movie Data (u.data) with just columns 0, 1, and 2 (user, movie, rating) all are np.int
-movieData = np.loadtxt('./data.txt', usecols = (0,1, 2), # replace 0 with the correct cod eto load the movie data
+movieData = np.loadtxt('./ml-100k/u.data', usecols = (0,1, 2), # replace 0 with the correct cod eto load the movie data
                         dtype = {'names': ('user', 'movie', 'rating'),
                                  'formats': (np.int, 'int', 'i4')},
-                       delimiter = "/t")
+                       delimiter = "\t")
 
 print(movieData)
 print(movieNames)
@@ -128,7 +128,7 @@ print("\n\nTop Ten movies with at least 100 ratings:")
 while amoutprinted < 10:
     key = movieRatingS[i][0]
     if mkovieRatingS[key] <= 100:
-        print(str(i + 1) + str(movieDict) + str(movieRatingS[i][1]) + str(movie RatingCount[key]))
+        print(str(i + 1) + str(movieDict) + str(movieRatingS[i][1]) + str(movieRatingCount[key]))
         amountprinted += 1
     i += 1
 
@@ -141,6 +141,11 @@ while amoutprinted < 10:
 # Create a user likes numpy ndarray so we can use Jaccard Similarity
 # A user "likes" a movie if they rated it a 4 or 5
 # Create a numpy ndarray of zeros with demensions of max user id + 1 and max movie + 1 (because we'll use them as 1 indexed not zero indexed)
+
+iLike = [4, 2]
+iLikeNp = np.zeroes(5)
+for id in iLike:
+    iLikeNp[id] = 1
 
 # Find the max movie ID + 1
 maxMovie = 0 # replace 0 with the correct code
