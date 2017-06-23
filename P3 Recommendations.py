@@ -88,7 +88,7 @@ movieRatingTemp = {} # replace 0 with code for an empty dictionary
 for movie in movieData:
     if movie['movie'] not in movieRatingTemp:
         movieRatingTemp[movie['movie']] = []
-    movieRatingTemp[movie['movie']].append(movie['rated'])
+        movieRatingTemp[movie['movie']].append(movie['rated'])
 
 print(movieRatingTemp)
 
@@ -101,6 +101,8 @@ movieRatingCount = {} # replace 0 with code for an empty dictionary
 
 for key in movieRatingTemp:
     movieRating[key] = np.sum(movieRatingTemp[key])
+    movieRatingCount[key] = len(movieRatingTemp[key])
+
 # Using numpy place the average rating for each movie in movieRating and the total number of ratings in movieRatingCount
 # Note: You will need a for loop to get each dictionary key
 
@@ -123,7 +125,14 @@ print("\n\nTop Ten movies with at least 100 ratings:")
 # ie (16. Close Shave, A (1995) (ID: 408) Rating: 4.49 Count: 112)
 # Number 16 is first in this list because it's the first movie with over 100 ratings
 
-exit(0) # Remove this line after we finish phase 2
+while amoutprinted < 10:
+    key = movieRatingS[i][0]
+    if mkovieRatingS[key] <= 100:
+        print(str(i + 1) + str(movieDict) + str(movieRatingS[i][1]) + str(movie RatingCount[key]))
+        amountprinted += 1
+    i += 1
+
+# Remove this line after we finish phase 2
 
 ########################################################
 # Begin Phase 3
@@ -174,5 +183,3 @@ processLikes(iLike)
 # Note: I recommend having them select movies by ID since the titles are really long.
 # You can just assume they have a list of movies somewhere so they already know what numbers to type in.
 # If you'd like to give them options though, that would be a cool bonus project if you finish early.
-
-        
