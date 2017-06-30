@@ -99,7 +99,7 @@ movieRatingTemp = {}  # replace 0 with code for an empty dictionary
 for row in movieData:
     if row['movie'] not in movieRatingTemp:
         movieRatingTemp[row['movie']] = [row['rating']]
-    else
+    else:
         movieRatingTemp[row['movie']].append(row['rating'])
 
 print(movieRatingTemp)
@@ -137,8 +137,8 @@ print("\n\nTop Ten movies with at least 100 ratings:")
 i = 0
 printCount = 0
 while printcount<10:
-    if movie Rating COunt[movieRatingS[i][0]] + "(ID: " + str(monieRatingS[i][0]) + ") Rating: " +
-        " Count: " + str 9movieRatingCOunt[movieRatingS[i][0]]
+    if movieRatingCount[movieRatingS[i][0]] + "(ID: " + str(monieRatingS[i][0]) + ") Rating: " +
+        " Count: " + str(movieRatingCount[movieRatingS[i][0]])
 # It should print the same thing, but this time all the movies should have over 100 ratings
 # The number should be the movie's absolute rank
 # ie (16. Close Shave, A (1995) (ID: 408) Rating: 4.49 Count: 112)
@@ -214,9 +214,27 @@ while True:
     if len(run) == 0 or run[0] != 'Y':
         break
     iLike = []
-    whileTrue:
-    movie = raw_input("Enter a movie IDthat you like [1-" + str(maxMovie)  + "]" +
-                      " or leave a blank if done: ")
+    while True:
+        movie = raw_input("Enter a movie IDthat you like [1-" + str(maxMovie)  + "]" +
+                          " or leave a blank if done: ")
+
+        try:
+            movieInt = int(movie)
+        except ValueError:
+            movieInt = 0
+
+        if len(movie) == 0:
+            break
+        elif movieInt < 1 or movieInt > maxMovie:
+            print("Invalid Selection")
+            continue
+        else:
+            iLike.append(movieInt)
+    if len(iLike) >0:
+        processLikes(iLike)
+    else:
+        print("You didn't enter any movies you like so we couldn't make any "+
+              "suggestions!")
 
 '''while True:
     recommendation = raw_input("Would you like a movie recommendation? (y/n)")
